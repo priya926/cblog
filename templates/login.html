@@ -1,0 +1,153 @@
+{% extends 'header.html' %}
+<!-- {% load static %} -->
+
+{% block title %} Services {% endblock title %}
+{% block content %}
+
+<!--- panel wrap div end -->
+<div class="page-wrap">
+  <div class="page-wrapper">
+    <div class="primary-content marRight30" style="width: 100%;">
+      <div class="mid-panel" style="width: 100%;">
+        <div class="panel" style="width: 100%;">
+          <div class="title">
+            <h1>Your Blogs</h1>
+            <!-- <h2>Lorem ipsum dolor sit amet consectetur adipiscing elit </h2> -->
+          </div>
+          <div class="container mt-5 p-5 rounded shadow bg-white" style="width: 90%;;">
+              {% if messages %}
+                  {% for message in messages %}
+                      <div class="mb-3 alert alert-success text-center">
+                          {{message}}
+                      </div>
+                  {% endfor %}
+              {% endif %}
+          <div class="d-flex mb-3 justify-content-between align-items-center">
+              <a href="" data-bs-toggle="modal" data-bs-target="#addnewstudentModal" class="btn btn-primary px-3 btn-sm">Create Blog</a>
+              <div class="">
+                  <form method="post" class="d-flex">
+                      {% csrf_token %}
+                      <input type="search" name="query" class="form-control" placeholder="search..." value="{{search_query}}">
+                      <button class="btn btn-success btn-sm px-3 mx-2" name="search">Search</button>
+                  </form>
+              </div>
+          </div>
+          <table class="table table-bordered">
+              <thead>
+                  <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Title</th>
+                      <th scope="col">Content</th>
+                      <th scope="col">Created At</th>
+                      <th scope="col">Updated At</th>
+                      <th scope="col">Actions</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for blogpost in blogposts %}
+                      <tr>
+                          <th>{{blogpost.id}}</th>
+                          <td>{{blogpost.title}}</td>
+                          <td>{{blogpost.content}}</td>
+                          <td>{{blogpost.created_at}}</td>
+                          <td>{{blogpost.updated_at}}</td>
+                          <td>
+                              <a href="" data-bs-toggle="modal" data-bs-target="#updatestudentModal_{{blogpost.id}}" class="btn btn-sm btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
+                              <a href="" data-bs-toggle="modal" data-bs-target="#deletestudentModal_{{blogpost.id}}" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></a>
+                          </td>
+                      </tr>
+                      <!-- update blogpost modal -->
+                      <div class="modal fade" id="updatestudentModal_{{blogpost.id}}" tabindex="-1" aria-labelledby="updatestudentModal_{{blogpost.id}}Label" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <form action="" method="post">
+                                  {% csrf_token %}
+                                  <div class="modal-content">
+                                      <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="updatestudentModal_{{blogpost.id}}Label">Update {{ blogpost.title }} Blog</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                      </div>
+                                      <div class="modal-body">
+                                          <input type="hidden" name="id" value="{{blogpost.id}}">
+                                          <div class="">
+                                              <label for="title">Blog Title</label>
+                                              <input required type="text" value="{{blogpost.title}}" name="title" class="form-control">
+                                          </div>
+                                          <div class="mt-3">
+                                              <label for="content">Content</label>
+                                              <input required type="text" value="{{blogpost.content}}" name="content" class="form-control">
+                                          </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                          <button type="submit" class="btn btn-primary" name="update">Update Your Blog</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+
+                      <!-- delete blogpost modal -->
+                      <div class="modal fade" id="deletestudentModal_{{blogpost.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deletestudentModal_{{blogpost.id}}Label" aria-hidden="true">
+                          <div class="modal-dialog">
+                              <form action="" method="post">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="id" value="{{blogpost.id}}">
+                                  <div class="modal-content">
+                                      <div class="modal-body">
+                                          <p>Are you sure? you want to delete</p>
+                                      </div>
+                                      <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                          <button type="submit" class="btn btn-danger" name="delete">Delete Blog</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+
+
+      <!-- add new student modal -->
+
+      <!-- Modal -->
+      <div class="modal fade" id="addnewstudentModal" tabindex="-1" aria-labelledby="addnewstudentModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <form action="" method="post">
+                  {% csrf_token %}
+                  <div class="modal-content">
+                      <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="addnewstudentModalLabel">Create Blog</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="">
+                              <label for="title">Title</label>
+                              <input required type="text" name="title" class="form-control">
+                          </div>
+                          <div class="mt-3">
+                              <label for="content">Content</label>
+                              <input required type="text" name="content" class="form-control">
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary" name="create">Create Blog</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+          <div class="clearing"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!--- page wrap div end -->
+
+{% endblock content %}

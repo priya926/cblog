@@ -1,0 +1,112 @@
+{% extends 'header.html' %}
+<!-- {% load static %} -->
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+<!--- header div end -->
+<div class="container panel-wrap">
+  <div class="row panel-wrapper justify-content-center">
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="img"><img style="height:260px; width:260px;" src="{% static 'images/img-1.png' %}"/></div>
+        <div class="title">
+          <h1>The WannaCry Ransomware Attack (2017)</h1>
+        </div>
+        <div class="border"></div>
+        <div class="content">
+          <p>The WannaCry ransomware attack affected over 200,000 computers across 150 countries in May 2017. The malware exploited a vulnerability in Microsoft Windows, encrypting user files and demanding payment in Bitcoin to restore access.</p>
+          <div class="button-link"><a href="{% url 'blog' %}">readmore</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="img"><img style="height:260px; width:260px;" src="{% static '\images\img-2.jpeg' %}"/></div>
+        <div class="title">
+          <h1>The Target Data Breach (2013)</h1>
+        </div>
+        <div class="border"></div>
+        <div class="content">
+          <p>Hackers gained access to Target's customer database during the holiday shopping season, stealing payment information of over 40 million credit and debit card users.</p>
+          <div class="button-link"><a href="{% url 'blog' %}">readmore</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel">
+        <div class="img"><img style="height:260px; width:260px;" src="{% static 'images/img-3.jpeg' %}"/></div>
+        <div class="title">
+          <h1>The Colonial Pipeline Ransomware Attack (2021)</h1>
+        </div>
+        <div class="border"></div>
+        <div class="content">
+          <p>A ransomware attack targeted the Colonial Pipeline, one of the largest fuel pipelines in the U.S. causing its operations to halt.</p>
+          <div class="button-link"><a href="{% url 'blog' %}">readmore</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--- panel wrap div end -->
+<div class="clearing"></div>
+<div class="page-wrap">
+  <div class="top-content">
+    <h1><b style="color:rgb(4, 246, 165)"><i>CYBER-CRIME-BLOG</i></b></h1>
+    <div class="top-border"></div>
+    <p>Cybercrime refers to any illegal activity involving computers or digital networks, including fraud, data theft, and malware attacksYour go-to resource for cybercrime news, prevention tips, and expert insights.
+      Welcome to cybercrime Blogs and learning how to protect yourself and your business online. From phishing scams to ransomware, we cover all facets of digital threats, offering you practical advice, security tips, and the latest updates in the world of cybersecurity.
+       </p>
+    <div class="bottom-border"></div>
+    <div class="button-link"><a href="{% url 'blog' %}">readmore</a></div>
+  </div>
+  <div class="page-wrapper">
+    <div class="primary-content marRight30 " style="width:100%;">
+      <div class="toppanel">
+        <div class="container">
+          <h1><b style="color:rgb(4, 246, 165)"><i>The Essential Tips to be Protected !!</i></b></h1>
+          <div class="border-bottom"></div>
+          <div class="container-wrap">
+            <div class="container-panel padBottom">
+              <div class="container-panel-left marRight20"><img src="{% static 'images/icon-1.png' %}"></div>
+              <div class="container-panel-right">
+                <h3 style="color:rgb(4, 246, 165)">Adjust Privacy Settings to Restrict Public Access</h3>
+                <p>Review each social media platform's privacy settings to control who can see your profile, posts, and personal information.</p>
+              </div>
+            </div>
+            <div class="container-panel borderNone marginTop">
+              <div class="container-panel-left marRight20"><img src="{% static 'images/icon-3.png' %}"></div>
+              <div class="container-panel-right">
+                <h3 style="color:rgb(4, 246, 165)"> Avoid Oversharing Personal Details</h3>
+                <p>While it’s tempting to share moments from your life, be cautious about sharing sensitive information.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-wrap borderNone">
+          <div class="container-panel marLeft20 padBottom">
+            <div class="container-panel-left marRight20"><img src="{% static 'images/icon-2.png' %}"></div>
+            <div class="container-panel-right">
+              <h3 style="color:rgb(4, 246, 165)">Recognize and Avoid Fake Profiles</h3>
+              <p>Many social media platforms are filled with fake profiles created for malicious purposes like phishing or spreading misinformation.</p>
+            </div>
+          </div>
+          <div class="container-panel borderNone marginTop marLeft20">
+            <div class="container-panel-left marRight20"><img src="{% static 'images/icon-4.png' %}"></div>
+            <div class="container-panel-right">
+              <h3 style="color:rgb(4, 246, 165)">Be Cautious with Friend Requests from Strangers.</h3>
+              <p>Receiving friend requests from unknown users can be risky, as many accounts are fake or created by scammers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>
+</div>
+<!--- page wrap div end -->
+
+{% endblock content %}
